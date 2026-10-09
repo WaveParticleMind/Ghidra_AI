@@ -13,7 +13,7 @@ renames through Ghidra transactions.
 
 - Python 3.10+ and Ghidra with PyGhidra support.
 - A JDK supported by your Ghidra version (Ghidra 12.1.2 requires Java 21).
-- An API key for OpenRouter or OpenAI. OpenAI has separate API billing.
+- An API key for OpenRouter or OpenAI.
 - Sample binary tests require Linux x86-64 (including WSL) and GNU binutils
   (`as`, `ld`, `nm`). Sample assembly files are only test fixtures.
 
@@ -98,26 +98,6 @@ checks the recovered candidate against the binary. The live command asks a
 model to recover the flag and fails if no candidate is accepted. It prompts
 for your key privately. Only our known fixture is executed.
 Use --ghidra for standard installations and --work-dir to select output storage.
-
-Tested locally: 20 offline tests and actual Ghidra 12.1.2/PyGhidra 3.1.0
-fixture analysis on Ubuntu WSL. The user also reported the expected flag from
-a live OpenRouter JSON response. This simple challenge does not establish
-reliability on real-world binaries. GitHub Actions runs offline tests on Linux
-and Windows without secrets; it does not run paid/live tests.
-
-## Limits
-
-- Maximum 100 functions per run, one API request per analyzed function.
-- Maximum 60,000 decompiled characters per function; larger functions are skipped.
-- Context scans 5,000 instructions, includes 20 called names and at most
-  16 referenced data previews of 64 bytes each.
-- OpenRouter allows 8,192 output tokens; OpenAI allows 2,000.
-- Incomplete, refused or invalid output is rejected. No automatic retries.
-- HTTP socket timeout is 120 seconds; blocking reads can delay cancellation.
-- Bounded static analysis without autonomous debugging, binary patching,
-  generated-code execution, type reconstruction or variable renaming.
-- Candidate flags need independent verification. Packed binaries, computed
-  references and runtime-generated values may require additional analysis.
 
 ## GitHub upload
 
