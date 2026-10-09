@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.venv/
+reports/
+*.gpr
+*.rep/
+*.log
+build/
+dist/
+*.o
+*.zip

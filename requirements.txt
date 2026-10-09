@@ -1,0 +1,2 @@
+# Required for a standard Ghidra installation. Snap includes its own runtime.
+pyghidra>=3.1,<4
